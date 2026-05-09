@@ -1,0 +1,8 @@
+spec_version: v1
+kind: knowledge_base
+name: role-goals-kb
+description: Role-specific goals, KPIs, and success criteria for Brand Technical Specialists (BTS) and Client Success Managers (CSM)
+documents:
+  - path: ./role-goals.pdf
+
+# Made with Bob

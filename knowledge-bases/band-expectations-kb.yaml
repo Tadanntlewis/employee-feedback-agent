@@ -1,0 +1,9 @@
+spec_version: v1
+kind: knowledge_base
+name: band-expectations-kb
+description: Salary band expectations, competencies, and progression criteria for bands 6-10 (BTS and CSM roles)
+documents:
+  - path: ./BTS band-expectations.pdf
+  - path: ./CSM band-expectations.pdf
+
+# Made with Bob
