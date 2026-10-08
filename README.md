@@ -1,321 +1,163 @@
 # Employee Feedback Agent
 
-A watsonx Orchestrate agent that generates comprehensive, structured performance reviews for Brand Technical Specialists (BTS) and Client Success Managers (CSM) using organizational role goals and band expectations as evaluation criteria.
+An AI-powered performance review assistant for Brand Technical Specialists (BTS) and Client Success Managers (CSM) in salary bands 6-10. Runs locally in **IBM Bob** — no watsonx Orchestrate deployment required.
 
 ## Overview
 
-This agent automates performance review creation by:
-1. Collecting employee information and performance data from managers
-2. Querying organizational knowledge bases for role-specific criteria and band expectations
-3. Analyzing performance against established standards
-4. Generating structured, comprehensive performance reviews with ratings and recommendations
+This agent helps managers create comprehensive, structured performance reviews by:
+1. Collecting employee information through a guided conversation
+2. Reading local knowledge base PDFs (role goals and band expectations)
+3. Analyzing performance against established organizational standards
+4. Generating structured feedback in the correct format for the review type
+
+## Quick Start (Run in Bob)
+
+### Prerequisites
+
+- [IBM Bob](https://www.ibm.com/products/watsonx-orchestrate) installed
+- This repository cloned locally:
+  ```bash
+  git clone https://github.com/Tadanntlewis/employee-feedback-agent.git
+  cd employee-feedback-agent
+  ```
+- The knowledge base PDFs in the `knowledge-bases/` folder (already included):
+  - `knowledge-bases/role-goals.pdf`
+  - `knowledge-bases/BTS band-expectations.pdf`
+  - `knowledge-bases/CSM band-expectations.pdf`
+
+### Setup (One Time)
+
+The Bob mode and skill are already configured in this repository under `.bob/`. When you open this folder as your workspace in Bob, they load automatically — no installation steps needed.
+
+### Using the Agent
+
+1. **Open this project folder as your workspace in Bob**
+2. **Select "Employee Feedback Agent"** from the mode picker (bottom of the screen)
+3. **Start a new conversation** and tell the agent who you need to create a review for
+4. The agent will guide you through the intake process step by step
+5. When it needs role goals or band expectations, it will activate the `/employee-feedback-kb` skill and read the local PDFs automatically
 
 ## Architecture
 
 ```mermaid
 graph TB
-    Manager[Manager] -->|Provide Info| Agent[Employee Feedback Agent]
-    Agent -->|Query| RoleKB[Role Goals KB]
-    Agent -->|Query| BandKB[Band Expectations KB]
-    Agent -->|Query| PerfKB[Performance KB]
-    RoleKB -->|Criteria| Agent
-    BandKB -->|Standards| Agent
-    PerfKB -->|Context| Agent
-    Agent -->|Generate| Review[Structured Review]
+    Manager[Manager] -->|Provide Info| Mode[Employee Feedback Agent Mode]
+    Mode -->|Activate| Skill[employee-feedback-kb Skill]
+    Skill -->|Read| RoleGoals[knowledge-bases/role-goals.pdf]
+    Skill -->|Read| BTSBand[knowledge-bases/BTS band-expectations.pdf]
+    Skill -->|Read| CSMBand[knowledge-bases/CSM band-expectations.pdf]
+    RoleGoals -->|Criteria| Mode
+    BTSBand -->|Standards| Mode
+    CSMBand -->|Standards| Mode
+    Mode -->|Generate| Review[Structured Review]
     Review -->|Return| Manager
-    
-    style Agent fill:#e1f5ff
-    style RoleKB fill:#fff4e1
-    style BandKB fill:#ffe1f5
-    style PerfKB fill:#e1ffe1
+
+    style Mode fill:#e1f5ff
+    style Skill fill:#fff4e1
+    style RoleGoals fill:#e1ffe1
+    style BTSBand fill:#ffe1f5
+    style CSMBand fill:#ffe1f5
 ```
 
 ## Project Structure
 
 ```
 employee-feedback-agent/
+├── .bob/
+│   ├── custom_modes.yaml               # Bob mode definition (the agent persona)
+│   └── skills/
+│       └── employee-feedback-kb/
+│           └── SKILL.md                # KB skill (reads local PDFs into context)
 ├── agents/
-│   ├── employee_feedback_agent.yaml     # Native agent configuration
-│   └── AskOrchestrate.yaml             # Orchestration agent
+│   └── employee_feedback_agent.yaml    # Original WXO agent config (reference only)
 ├── knowledge-bases/
-│   ├── role-goals-kb.yaml              # Role-specific evaluation criteria
-│   ├── band-expectations-kb.yaml       # Band-level competencies
-│   ├── employee-performance-kb.yaml    # Performance tracking
-│   ├── role-goals.pdf                  # Role goals documentation
-│   ├── BTS band-expectations.pdf       # BTS band expectations
-│   ├── CSM band-expectations.pdf       # CSM band expectations
-│   └── upload-guide.md                 # KB upload instructions
-├── employee-feedback-agent-plan.md     # Detailed implementation plan
-├── employee-feedback-agent-README.md   # Agent-specific documentation
-├── employee-feedback-agent-workflow.md # Workflow documentation
-├── employee-self-assessment-template.md # Self-assessment template
-├── employee-self-feedback-quarterly.md  # Quarterly review template
-├── employee-self-feedback-yearly.md     # Annual review template
-├── AGENT-CREATION-PROMPT-EXAMPLE.md    # Prompt engineering guide
-├── import-employee-feedback-agent.sh   # Deployment script
-└── README.md                           # This file
+│   ├── role-goals.pdf                  # Role goals for BTS and CSM
+│   ├── BTS band-expectations.pdf       # BTS band 6-10 expectations
+│   ├── CSM band-expectations.pdf       # CSM band 6-10 expectations
+│   ├── role-goals-kb.yaml              # WXO KB config (reference only)
+│   └── band-expectations-kb.yaml       # WXO KB config (reference only)
+├── employee-self-assessment-template.md
+├── employee-self-feedback-quarterly.md
+├── employee-self-feedback-yearly.md
+└── README.md
 ```
 
-## Features
+## Review Types & Formats
 
-- ✅ **Multi-Role Support**: Handles BTS and CSM roles with role-specific criteria
-- ✅ **Band-Aware**: Evaluates against band 6-10 expectations
-- ✅ **Knowledge Base Integration**: Uses organizational standards and criteria
-- ✅ **Structured Output**: Consistent, comprehensive review format
-- ✅ **Progress Tracking**: Compares with previous reviews when available
-- ✅ **Development Focus**: Provides actionable recommendations
-- ✅ **Band Progression**: Assesses readiness for advancement
+### Quarterly & Mid-Year Reviews
+Two focused sections:
+1. **What Went Well?** — accomplishments, strengths, positive outcomes
+2. **What Could Be Improved?** — development areas, constructive feedback
 
-## Review Components
-
-### Generated Review Includes:
-
-1. **Overall Rating** (1-5 scale with description)
-2. **Category Ratings** (role-specific competencies)
-3. **Performance Summary** (narrative overview)
-4. **Strengths** (3-5 specific examples)
-5. **Areas for Improvement** (constructive feedback)
-6. **Progress Tracking** (vs. previous review)
-7. **Development Recommendations** (training, assignments)
-8. **Band Progression Assessment** (readiness for advancement)
-9. **Action Items** (specific, measurable goals)
-10. **Manager Notes** (additional context)
-
-## Installation
-
-### Prerequisites
-
-- watsonx Orchestrate Developer Edition installed
-- watsonx Orchestrate CLI (`orchestrate`) installed
-- Python 3.8+ with watsonx Orchestrate SDK
-
-### Setup
-
-1. **Start watsonx Orchestrate**:
-   ```bash
-   orchestrate server start -e .env -d
-   ```
-
-2. **Upload Knowledge Bases**:
-   ```bash
-   # Upload role goals
-   orchestrate kb upload knowledge-bases/role-goals.pdf --kb-id role-goals-kb
-   
-   # Upload band expectations
-   orchestrate kb upload knowledge-bases/BTS\ band-expectations.pdf --kb-id band-expectations-kb
-   orchestrate kb upload knowledge-bases/CSM\ band-expectations.pdf --kb-id band-expectations-kb
-   ```
-
-3. **Deploy the Agent**:
-   ```bash
-   ./import-employee-feedback-agent.sh
-   ```
-
-   Or manually:
-   ```bash
-   orchestrate kb import knowledge-bases/role-goals-kb.yaml
-   orchestrate kb import knowledge-bases/band-expectations-kb.yaml
-   orchestrate kb import knowledge-bases/employee-performance-kb.yaml
-   orchestrate agent import agents/employee_feedback_agent.yaml
-   ```
-
-## Usage
-
-### Via Chat UI
-
-1. Open watsonx Orchestrate chat interface
-2. Select "Employee Feedback Agent"
-3. Provide employee information when prompted:
-   - Full name
-   - Role (BTS or CSM)
-   - Current salary band (6-10)
-   - Review period
-   - Performance details
-4. Review the generated performance review
-
-### Example Interaction
-
-```
-Manager: "I need to create a performance review for Sarah Johnson"
-
-Agent: "I'll help you create a comprehensive performance review. Let me gather some information:
-
-1. What is Sarah's role? (BTS or CSM)
-2. What is her current salary band? (6-10)
-3. What review period is this for? (e.g., Q1 2026, FY 2025)
-4. Is this a quarterly or annual review?
-
-Please also share:
-- Key accomplishments and achievements
-- Challenges faced and how they were handled
-- Client feedback
-- Goals achieved vs. goals set
-- Areas of growth
-- Team collaboration examples"
-
-Manager: [Provides information]
-
-Agent: [Queries knowledge bases and generates structured review]
-```
-
-## Output Format
-
-The agent generates a comprehensive markdown document with:
-
-```markdown
-# Performance Review: [Employee Name]
-
-**Role:** [BTS/CSM]  
-**Band:** [6-10]  
-**Review Period:** [Period]  
-**Review Date:** [Date]  
-**Reviewer:** [Manager Name]
-
-## Overall Rating: [1-5]
-[Rating description and justification]
-
-## Category Ratings
-[Role-specific competency ratings with notes]
-
-## Performance Summary
-[2-3 paragraph narrative overview]
-
-## Strengths
-- [Specific strength with example]
-- [Specific strength with example]
-...
-
-## Areas for Improvement
-- [Constructive feedback with suggestions]
-- [Constructive feedback with suggestions]
-...
-
-## Progress Tracking
-[Comparison with previous review if available]
-
-## Development Recommendations
-- [Specific development item]
-- [Specific development item]
-...
-
-## Band Progression Assessment
-[Readiness for advancement analysis]
-
-## Action Items
-- [Specific, measurable action with timeline]
-- [Specific, measurable action with timeline]
-...
-
-## Manager Notes
-[Additional confidential observations]
-```
+### Year-End Reviews
+Four comprehensive sections:
+1. **Business Outcomes Summary** — business impact and results
+2. **Skills Outcomes Summary** — technical and professional skills
+3. **Behaviors Outcomes Summary** — leadership, collaboration, cultural alignment
+4. **Manager Evaluation Summary** — performance segment (1-5) and manager comments
 
 ## Supported Roles
 
 ### Brand Technical Specialist (BTS)
-Evaluation categories:
-1. Technical Excellence
-2. Brand Knowledge and Advocacy
-3. Client Relationship Management
-4. Innovation and Problem-Solving
-5. Collaboration and Knowledge Sharing
-6. Band-Level Competencies
+Evaluation covers: Technical Excellence, Brand Knowledge and Advocacy, Client Relationship Management, Innovation and Problem-Solving, Collaboration and Knowledge Sharing, Band-Level Competencies
 
 ### Client Success Manager (CSM)
-Evaluation categories:
-1. Client Relationship Excellence
-2. Revenue Growth and Account Expansion
-3. Client Advocacy and Success
-4. Proactive Account Management
-5. Strategic Planning and Execution
-6. Band-Level Competencies
+Evaluation covers: Client Relationship Excellence, Revenue Growth and Account Expansion, Client Advocacy and Success, Proactive Account Management, Strategic Planning and Execution, Band-Level Competencies
 
-## Knowledge Base Content
+## Supported Salary Bands
 
-### Role Goals KB
-- Role-specific evaluation criteria
-- KPIs and success metrics
-- Cross-role competencies
-- Rating scales and guidelines
+Bands 6–10, with role-specific competency and experience expectations at each level.
 
-### Band Expectations KB
-- Band 6-10 competencies
-- Skills and behaviors by level
-- Progression requirements
-- Leadership expectations
+## Example Conversation
 
-### Employee Performance KB
-- Historical performance data
-- Previous reviews
-- Goal tracking
-- Development progress
+```
+Manager: I need to create a Q1 review for Sarah Johnson
 
-## Best Practices
+Agent: I'll help you create a performance review. Let me gather some information.
+       What is Sarah's role? (BTS or CSM)
 
-1. **Provide Specific Examples**: Include concrete achievements and situations
-2. **Be Objective**: Base feedback on observable behaviors and results
-3. **Balance Feedback**: Include both strengths and areas for improvement
-4. **Reference Standards**: Agent will align feedback with organizational criteria
-5. **Track Progress**: Provide previous review for comparison when available
-6. **Focus on Development**: Emphasize growth opportunities
+Manager: CSM
 
-## Troubleshooting
+Agent: What is Sarah's current salary band? (6-10)
 
-### Common Issues
+Manager: Band 8
 
-**Issue**: Agent doesn't query knowledge bases
-- **Solution**: Verify knowledge bases are uploaded and configured correctly
-
-**Issue**: Generic feedback not aligned with role
-- **Solution**: Ensure role and band are specified correctly
-
-**Issue**: Missing category ratings
-- **Solution**: Provide sufficient performance information for each competency area
-
-**Issue**: No band progression assessment
-- **Solution**: Verify band expectations KB includes next band criteria
-
-## Development
-
-### Customizing the Agent
-
-1. **Modify Evaluation Criteria**: Update role-goals-kb.yaml
-2. **Adjust Band Expectations**: Update band-expectations-kb.yaml
-3. **Change Output Format**: Modify agent instructions in employee_feedback_agent.yaml
-4. **Add New Roles**: Extend agent configuration and knowledge bases
-
-### Testing Changes
-
-```bash
-# Test agent locally
-orchestrate agent test employee_feedback_agent
-
-# Deploy changes
-./import-employee-feedback-agent.sh
+Agent: What review period is this for?
+...
+[Agent loads KB PDFs, gathers all inputs, then generates structured review]
 ```
 
-## Documentation
+## Customizing the Agent
 
-- [Detailed Implementation Plan](employee-feedback-agent-plan.md)
-- [Agent Workflow](employee-feedback-agent-workflow.md)
-- [Prompt Engineering Guide](AGENT-CREATION-PROMPT-EXAMPLE.md)
-- [Self-Assessment Templates](employee-self-assessment-template.md)
-- [Quarterly Review Template](employee-self-feedback-quarterly.md)
-- [Annual Review Template](employee-self-feedback-yearly.md)
+- **Update evaluation criteria**: Replace the PDFs in `knowledge-bases/`
+- **Change agent behavior**: Edit `.bob/custom_modes.yaml` (the `roleDefinition` field)
+- **Adjust KB loading**: Edit `.bob/skills/employee-feedback-kb/SKILL.md`
+
+## Optional: Deploy to watsonx Orchestrate
+
+The original WXO deployment files are still present for teams that want to deploy this agent to watsonx Orchestrate:
+
+```bash
+# Import knowledge bases
+orchestrate kb import knowledge-bases/role-goals-kb.yaml
+orchestrate kb import knowledge-bases/band-expectations-kb.yaml
+
+# Import agent
+orchestrate agent import agents/employee_feedback_agent.yaml
+```
+
+See `DEPLOYMENT-CHECKLIST.md` for full WXO deployment instructions.
+
+## Self-Assessment Templates
+
+Employee self-assessment templates are included for use alongside the agent:
+
+- [`employee-self-assessment-template.md`](employee-self-assessment-template.md) — General template
+- [`employee-self-feedback-quarterly.md`](employee-self-feedback-quarterly.md) — Quarterly/Mid-Year format
+- [`employee-self-feedback-yearly.md`](employee-self-feedback-yearly.md) — Year-End format
 
 ## Resources
 
-- [watsonx Orchestrate Documentation](https://developer.watson-orchestrate.ibm.com/)
-- [Agent Configuration Guide](https://developer.watson-orchestrate.ibm.com/agents/build_agent)
-- [Knowledge Base Setup](https://developer.watson-orchestrate.ibm.com/knowledge-bases)
-
-## License
-
-This project is part of the watsonx Orchestrate agent examples.
-
-## Support
-
-For issues or questions:
-1. Check the [watsonx Orchestrate documentation](https://developer.watson-orchestrate.ibm.com/)
-2. Review the implementation guide in `employee-feedback-agent-plan.md`
-3. Consult the prompt engineering guide in `AGENT-CREATION-PROMPT-EXAMPLE.md`
+- [IBM Bob Documentation](https://www.ibm.com/products/watsonx-orchestrate)
+- [watsonx Orchestrate Developer Docs](https://developer.watson-orchestrate.ibm.com/)
+- [GitHub Repository](https://github.com/Tadanntlewis/employee-feedback-agent)

@@ -1,213 +1,112 @@
 # Employee Feedback Agent - Quick Start Guide
 
-Get your Employee Feedback Agent up and running in 15 minutes!
+Get up and running in under 5 minutes with **IBM Bob** — no deployment or API keys needed.
 
-## Prerequisites Checklist
+## Prerequisites
 
-- [ ] IBM watsonx Orchestrate account with API access
-- [ ] watsonx Orchestrate CLI installed (`pip install ibm-watsonx-orchestrate`)
-- [ ] IBM Cloud API key set as environment variable
-- [ ] Two PDF documents ready:
-  - `role-goals.pdf` (BTS and CSM role goals, KPIs, success criteria)
-  - `band-expectations.pdf` (Band 6-10 competencies and progression criteria)
+- [IBM Bob](https://www.ibm.com/products/watsonx-orchestrate) installed
+- This repository cloned locally:
+  ```bash
+  git clone https://github.com/Tadanntlewis/employee-feedback-agent.git
+  cd employee-feedback-agent
+  ```
 
-## Quick Setup (3 Steps)
+The PDF knowledge base files are already included in `knowledge-bases/`. No setup required.
 
-### Step 1: Upload Your PDF Documents (2 minutes)
+## 3 Steps to Your First Review
 
-Place your PDF files in the `knowledge-bases/` directory:
+### Step 1: Open the Project in Bob (30 seconds)
 
-```bash
-# Copy your PDFs to the knowledge-bases directory
-cp /path/to/your/role-goals.pdf knowledge-bases/role-goals.pdf
-cp /path/to/your/band-expectations.pdf knowledge-bases/band-expectations.pdf
+Open Bob and set this cloned folder as your workspace. The `.bob/` directory in the repo contains the mode and skill — Bob loads them automatically.
 
-# Verify files are in place
-ls -lh knowledge-bases/*.pdf
-```
+### Step 2: Switch to "Employee Feedback Agent" Mode (5 seconds)
 
-**Expected output:**
-```
--rw-r--r--  1 user  staff   2.5M May  4 15:30 knowledge-bases/band-expectations.pdf
--rw-r--r--  1 user  staff   1.8M May  4 15:30 knowledge-bases/role-goals.pdf
-```
+Click the mode picker at the bottom of the Bob interface and select **Employee Feedback Agent**.
 
-### Step 2: Deploy the Agent (10 minutes)
+### Step 3: Start a New Conversation
 
-Run the deployment script:
+Tell the agent who needs a review. It will guide you through the rest.
 
-```bash
-./import-employee-feedback-agent.sh
-```
-
-**What happens:**
-1. ✓ Checks for required PDF files
-2. ✓ Imports role goals knowledge base
-3. ✓ Imports band expectations knowledge base
-4. ✓ Waits for indexing (5-10 minutes)
-5. ✓ Imports employee feedback agent
-6. ✓ Verifies deployment
-
-**Expected output:**
-```
-==========================================
-Employee Feedback Agent Deployment
-==========================================
-
-✓ All required PDF files found
-
-Step 1: Importing Role Goals Knowledge Base...
-✓ Role Goals KB imported successfully
-
-Step 2: Importing Band Expectations Knowledge Base...
-✓ Band Expectations KB imported successfully
-
-Step 3: Waiting for knowledge bases to be indexed...
-✓ role-goals-kb is READY
-✓ band-expectations-kb is READY
-
-Step 4: Importing Employee Feedback Agent...
-✓ Employee Feedback Agent imported successfully
-
-==========================================
-✓ Deployment Complete!
-==========================================
-```
-
-### Step 3: Test the Agent (3 minutes)
-
-Start a chat session:
-
-```bash
-orchestrate chat --agent employee_feedback_agent
-```
-
-Try this sample conversation:
+## Sample Conversation
 
 ```
-You: I need to create a performance review for Sarah Johnson
+You: I need to create a Q1 review for Sarah Johnson
 
-Agent: Hello! I'll help you create a performance review. Let's start with the employee basics.
-       What is Sarah's role?
+Agent: I'll help you create a performance review for Sarah.
+       Let me gather some information. What is Sarah's role? (BTS or CSM)
 
 You: Client Success Manager
 
-Agent: What is Sarah's current salary band?
+Agent: What is Sarah's current salary band? (6-10)
 
 You: Band 8
 
-Agent: What review period is this for?
+Agent: What review period is this for, and is this a Quarterly, Mid-Year, or Year-End review?
 
-You: Q1 2026
+You: Q1 2026, Quarterly
 
-Agent: Is this a quarterly or annual review?
-
-You: Quarterly
-
-Agent: Do you have a previous review for Sarah that I should reference for progress tracking?
+Agent: Do you have a previous review for Sarah to reference for progress tracking?
 
 You: No, this is her first review with us
 
-Agent: Thank you. Please share Sarah's key accomplishments during Q1 2026.
+Agent: Do you have Sarah's employee self-feedback for this period?
 
-You: - Increased client retention rate from 85% to 92%
-     - Successfully onboarded 5 new enterprise clients
+You: Yes, I'll paste it here...
+
+Agent: Great. Please share Sarah's key accomplishments during Q1 2026, any challenges faced,
+       client feedback, and your key talking points for this review.
+
+You: - Increased client retention from 85% to 92%
+     - Onboarded 5 new enterprise clients ($500K ARR)
      - Generated $250K in expansion revenue
-     - Led strategic business reviews with 12 key accounts
+     - Led 12 strategic business reviews
      - Mentored 2 junior CSMs
+     [Manager's talking points: very strong quarter, wants to address communication gaps...]
 
-[Continue providing performance details...]
-
-Agent: I have all the information needed. Would you like me to generate the performance review now?
+Agent: I have all the information needed. I'll now load the role goals and CSM Band 8
+       expectations from the knowledge base, then generate the quarterly review.
+       Would you like me to proceed?
 
 You: Yes
 
-Agent: [Generates comprehensive structured feedback with ratings, summary, and recommendations]
+Agent: [Generates structured two-section quarterly review with KB references woven throughout]
 ```
 
-## Verification Checklist
+## What the Agent Produces
 
-After deployment, verify everything is working:
+### Quarterly & Mid-Year Reviews
+```
+# Performance Review: Sarah Johnson
+Role: CSM | Band: 8 | Period: Q1 2026 | Type: Quarterly
 
-- [ ] Knowledge bases show status "READY"
-  ```bash
-  orchestrate knowledge-bases check-status --name role-goals-kb
-  orchestrate knowledge-bases check-status --name band-expectations-kb
-  ```
+## 1. What Went Well?
+[3-5 paragraphs with specific examples referencing CSM role goals and Band 8 expectations]
 
-- [ ] Agent appears in agent list
-  ```bash
-  orchestrate agents list --kind native | grep employee_feedback_agent
-  ```
+## 2. What Could Be Improved?
+[2-4 paragraphs with actionable, constructive feedback]
 
-- [ ] Agent responds to chat
-  ```bash
-  orchestrate chat --agent employee_feedback_agent
-  ```
-
-- [ ] Agent can query knowledge bases (test by asking about role goals)
-
-## Common Issues & Quick Fixes
-
-### Issue: "PDF file not found"
-**Fix:** Ensure PDFs are in `knowledge-bases/` directory with exact names:
-```bash
-ls knowledge-bases/role-goals.pdf
-ls knowledge-bases/band-expectations.pdf
+## Manager Notes
+[Optional space for additional comments]
 ```
 
-### Issue: "Knowledge base indexing timeout"
-**Fix:** Large PDFs may take longer. Wait 15 minutes and check status:
-```bash
-orchestrate knowledge-bases check-status --name role-goals-kb
+### Year-End Reviews
+```
+# Annual Performance Review: Sarah Johnson
+Role: CSM | Band: 8 | Period: Year-End 2026
+
+## 1. Business Outcomes Summary
+## 2. Skills Outcomes Summary
+## 3. Behaviors Outcomes Summary
+## 4. Manager Evaluation Summary
+   Performance Segment: [1-5] + Manager Comments
 ```
 
-### Issue: "Agent import failed"
-**Fix:** Ensure knowledge bases are imported and READY first:
-```bash
-orchestrate knowledge-bases list
-```
+## Sample Test Data
 
-### Issue: "Authentication error"
-**Fix:** Set your IBM Cloud API key:
-```bash
-export IBM_CLOUD_API_KEY="your-api-key-here"
-```
+Use this data to try the agent before your first real review:
 
-## Next Steps
-
-Once your agent is running:
-
-1. **Create Your First Review**
-   - Start with a simple test case
-   - Provide detailed performance information
-   - Review the generated feedback
-
-2. **Refine Knowledge Bases**
-   - Update PDFs based on feedback quality
-   - Add more specific criteria and examples
-   - Re-import updated knowledge bases
-
-3. **Train Your Team**
-   - Share the README with managers
-   - Provide sample conversations
-   - Establish best practices for your organization
-
-4. **Monitor and Improve**
-   - Collect feedback from managers
-   - Track review quality and consistency
-   - Iterate on knowledge base content
-
-## Getting Help
-
-- **Full Documentation**: See `employee-feedback-agent-README.md`
-- **Upload Guide**: See `knowledge-bases/upload-guide.md`
-- **Implementation Plan**: See `employee-feedback-agent-plan.md`
-- **watsonx Orchestrate Docs**: https://developer.watson-orchestrate.ibm.com
-
-## Sample Performance Data
-
-Need test data? Use this sample for Sarah Johnson (CSM, Band 8, Q1 2026):
+**Employee:** Sarah Johnson  
+**Role:** CSM | **Band:** 8 | **Period:** Q1 2026 | **Type:** Quarterly
 
 **Accomplishments:**
 - Increased client retention from 85% to 92%
@@ -218,20 +117,24 @@ Need test data? Use this sample for Sarah Johnson (CSM, Band 8, Q1 2026):
 - Resolved 3 at-risk accounts successfully
 
 **Challenges:**
-- Initial difficulty with new CRM system (resolved in 2 weeks)
+- Initial adjustment to new CRM system (resolved in 2 weeks)
 - One client escalation (handled professionally, client retained)
 
 **Client Feedback:**
-- "Sarah is proactive and always thinking ahead" - Client A
-- "Best CSM we've worked with" - Client B
-- "Helped us achieve 30% efficiency gain" - Client C
+- "Sarah is proactive and always thinking ahead"
+- "Best CSM we've worked with"
+- "Helped us achieve 30% efficiency gain"
 
-**Goals for Next Quarter:**
-- Achieve 95% retention rate
-- Generate $300K expansion revenue
-- Complete advanced negotiation training
-- Lead cross-functional project
+## Common Issues
 
----
+| Issue | Fix |
+|-------|-----|
+| Mode not visible in picker | Confirm this folder is set as your Bob workspace and restart Bob |
+| PDFs not loading | Verify PDF files exist at `knowledge-bases/role-goals.pdf`, `knowledge-bases/BTS band-expectations.pdf`, `knowledge-bases/CSM band-expectations.pdf` |
+| Agent gives generic feedback | Provide more specific performance details and examples |
 
-**Ready to start?** Run `./import-employee-feedback-agent.sh` now!
+## Getting Help
+
+- **Full Documentation**: See `employee-feedback-agent-README.md`
+- **Self-Assessment Templates**: `employee-self-feedback-quarterly.md` / `employee-self-feedback-yearly.md`
+- **GitHub**: https://github.com/Tadanntlewis/employee-feedback-agent
