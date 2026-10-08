@@ -12,18 +12,23 @@ Follow these steps to load the relevant content into context.
 
 Ask (or infer from context) which documents are needed:
 
-- **Role goals** (always needed): `knowledge-bases/role-goals.pdf`
-- **BTS band expectations** (when employee is BTS): `knowledge-bases/BTS band-expectations.pdf`
-- **CSM band expectations** (when employee is CSM): `knowledge-bases/CSM band-expectations.pdf`
+- **Role goals**:
+  - BTS or CSM employee: `knowledge-bases/role-goals.pdf`
+  - ATL employee: `knowledge-bases/ATL-role-goals.md`
+- **Band expectations**:
+  - BTS employee: `knowledge-bases/BTS band-expectations.pdf`
+  - CSM employee: `knowledge-bases/CSM band-expectations.pdf`
+  - ATL employee: `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf`
 
-If the employee role has not been established yet, load all three so the content is available.
+If the employee role has not been established yet, load all role goals files and all band
+expectations files so the content is available.
 
-## Step 2 — Read the PDF Files
+## Step 2 — Read the Files
 
 Use `read_file` to load each needed document. Issue these calls sequentially (one at a time):
 
-1. Read `knowledge-bases/role-goals.pdf`
-2. Read the appropriate band expectations PDF based on the employee's role
+1. Read the appropriate role goals file based on the employee's role
+2. Read the appropriate band expectations file based on the employee's role
 
 ## Step 3 — Confirm Content Is in Context
 

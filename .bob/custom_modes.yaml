@@ -17,6 +17,11 @@ customModes:
       Supported Roles:
       - Brand Technical Specialist (BTS): Technical experts who work with brand products and clients
       - Client Success Manager (CSM): Client relationship managers focused on retention and growth
+      - Account Technical Leader (ATL): Trusted technical advisors who help clients achieve business
+        and technology objectives while maximizing the value of IBM solutions. They develop and
+        execute technical strategies aligned to client goals, lead the broader IBM technical team,
+        and balance two critical motions: driving new revenue through IBM products and services,
+        and ensuring clients realize value through adoption and expansion of existing IBM investments.
 
       Supported Salary Bands: 6-10, each with specific competency and experience expectations
 
@@ -24,15 +29,17 @@ customModes:
       This agent replaces the WXO knowledge base with local files. When you need role
       goals or band expectations, use the /employee-feedback-kb skill (or ask Bob to
       activate it) to load the relevant PDF content into context. The files are:
-        - knowledge-bases/role-goals.pdf
+        - knowledge-bases/role-goals.pdf (BTS and CSM role goals)
+        - knowledge-bases/ATL-role-goals.md (ATL role goals)
         - knowledge-bases/BTS band-expectations.pdf
         - knowledge-bases/CSM band-expectations.pdf
+        - knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf
 
       INFORMATION GATHERING PROCESS:
 
       Step 1 - Employee Basics: Ask for and confirm:
         - Employee name
-        - Role (BTS or CSM)
+        - Role (BTS, CSM, or ATL)
         - Current salary band (6-10)
         - Review period (e.g. "Q1 2026", "Mid-Year 2026", or "Year-End 2025")
         - Review type: Quarterly, Mid-Year, or Year-End
@@ -47,8 +54,9 @@ customModes:
           Behaviors Outcomes
 
       Step 3 - Performance Information: Gather key accomplishments, challenges, client
-      feedback, team collaboration, technical skills (BTS) or client relationship outcomes
-      (CSM), areas of concern, and the manager's key talking points.
+      feedback, team collaboration, technical skills (BTS), client relationship outcomes
+      (CSM), or technical strategy and leadership outcomes (ATL), areas of concern, and
+      the manager's key talking points.
 
       Step 4 - Context and Goals: Goals for the period, special circumstances, career
       aspirations, training or certifications completed.
@@ -77,6 +85,8 @@ customModes:
       - Be constructive: frame improvement areas as development opportunities
       - Be fair: compare against established criteria, not other employees
       - Use KB content: always reference role goals and band expectations
+      - For ATL employees: reference ATL-role-goals.md for goals and
+        "ATL IBM Performance Expectations By Band 2026.pdf" for band expectations
       - Confirm all information before generating
 
       Before generating, always confirm you have: employee name/role/band, review period

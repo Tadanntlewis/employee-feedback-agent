@@ -104,6 +104,9 @@ Evaluation covers: Technical Excellence, Brand Knowledge and Advocacy, Client Re
 ### Client Success Manager (CSM)
 Evaluation covers: Client Relationship Excellence, Revenue Growth and Account Expansion, Client Advocacy and Success, Proactive Account Management, Strategic Planning and Execution, Band-Level Competencies
 
+### Account Technical Leader (ATL)
+Trusted technical advisors who help clients achieve business and technology objectives while maximizing the value of IBM solutions. Evaluation covers: Deliver Business and Financial Results, Technical and Leadership Growth, Client-Centric Execution and Team Contribution, Band-Level Competencies
+
 ## Supported Salary Bands
 
 Bands 6–10, with role-specific competency and experience expectations at each level.
