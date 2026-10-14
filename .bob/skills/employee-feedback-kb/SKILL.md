@@ -18,7 +18,7 @@ Ask (or infer from context) which documents are needed:
 - **Band expectations**:
   - BTS employee: `knowledge-bases/BTS band-expectations.pdf`
   - CSM employee: `knowledge-bases/CSM band-expectations.pdf`
-  - ATL employee: `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf`
+  - ATL employee: `knowledge-bases/ATL-band-expectations-by-band.md` (band-by-band restatement of `ATL IBM Performance Expectations By Band 2026.pdf`; use this instead of the PDF, whose table layout is lost when read as text). ATL expectations are defined for Bands 8-10 only; Bands 6 and 7 are empty in the source.
 
 If the employee role has not been established yet, load all role goals files and all band
 expectations files so the content is available.

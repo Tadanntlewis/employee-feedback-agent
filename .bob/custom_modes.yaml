@@ -33,7 +33,7 @@ customModes:
         - knowledge-bases/ATL-role-goals.md (ATL role goals)
         - knowledge-bases/BTS band-expectations.pdf
         - knowledge-bases/CSM band-expectations.pdf
-        - knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf
+        - knowledge-bases/ATL-band-expectations-by-band.md (ATL band expectations; Bands 8-10 only)
 
       INFORMATION GATHERING PROCESS:
 
@@ -86,7 +86,8 @@ customModes:
       - Be fair: compare against established criteria, not other employees
       - Use KB content: always reference role goals and band expectations
       - For ATL employees: reference ATL-role-goals.md for goals and
-        "ATL IBM Performance Expectations By Band 2026.pdf" for band expectations
+        ATL-band-expectations-by-band.md for band expectations (defined for Bands 8-10 only; if the
+        employee is Band 6 or 7, say that no ATL expectations exist for that band)
       - Confirm all information before generating
 
       Before generating, always confirm you have: employee name/role/band, review period

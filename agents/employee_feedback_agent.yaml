@@ -84,7 +84,7 @@ instructions: |
   **IMPORTANT**: Query the appropriate band expectations based on employee role:
   - **For BTS employees**: Query BTS-specific band expectations
   - **For CSM employees**: Query CSM-specific band expectations
-  - **For ATL employees**: Query ATL-specific band expectations ("ATL IBM Performance Expectations By Band 2026")
+  - **For ATL employees**: Query ATL-specific band expectations ("ATL band expectations; defined for Bands 8-10 only, so tell the manager if the employee is Band 6 or 7)
   
   Retrieve:
   - Competency expectations for the employee's current band

@@ -44,7 +44,8 @@ Five files included in the repository:
 | `ATL-role-goals.md` | 2026 goal plan for Account Technical Leaders |
 | `BTS band-expectations.pdf` | Band 6-10 competencies, skills, and progression criteria for BTS |
 | `CSM band-expectations.pdf` | Band 6-10 competencies, skills, and progression criteria for CSM |
-| `ATL IBM Performance Expectations By Band 2026.pdf` | Band 6-10 performance expectations for ATL |
+| `ATL-band-expectations-by-band.md` | ATL expectations restated band by band (Bands 8-10; Bands 6-7 are empty in the source). Used by the agent |
+| `ATL IBM Performance Expectations By Band 2026.pdf` | Source PDF for the file above |
 
 ### 4. Original WXO Files (reference only)
 
@@ -73,7 +74,7 @@ Employee Feedback Agent Mode (.bob/custom_modes.yaml)
       │         ├──► knowledge-bases/ATL-role-goals.md          (ATL employees)
       │         ├──► knowledge-bases/BTS band-expectations.pdf  (BTS employees)
       │         ├──► knowledge-bases/CSM band-expectations.pdf  (CSM employees)
-      │         └──► knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf  (ATL employees)
+      │         └──► knowledge-bases/ATL-band-expectations-by-band.md  (ATL employees)
       │
       ▼
 Structured Review Output
@@ -100,7 +101,8 @@ employee-feedback-agent/
 │   ├── ATL-role-goals.md                     # ATL role goals
 │   ├── BTS band-expectations.pdf             # BTS band expectations KB
 │   ├── CSM band-expectations.pdf             # CSM band expectations KB
-│   ├── ATL IBM Performance Expectations By Band 2026.pdf  # ATL band expectations
+│   ├── ATL-band-expectations-by-band.md  # ATL band expectations (Bands 8-10)
+│   ├── ATL IBM Performance Expectations By Band 2026.pdf  # Source PDF for the file above
 │   ├── role-goals-kb.yaml                    # WXO KB config (reference)
 │   └── band-expectations-kb.yaml             # WXO KB config (reference)
 ├── employee-self-assessment-template.md
@@ -149,7 +151,7 @@ Deliver Business and Financial Results · Technical and Leadership Growth · Cli
 | Agent behavior, output format, intake flow | `.bob/custom_modes.yaml` — `roleDefinition` field |
 | How PDFs are loaded / which files to use | `.bob/skills/employee-feedback-kb/SKILL.md` |
 | Role goals and KPIs | Replace `knowledge-bases/role-goals.pdf` (BTS/CSM) or `knowledge-bases/ATL-role-goals.md` (ATL) |
-| Band expectations | Replace `knowledge-bases/BTS band-expectations.pdf`, `knowledge-bases/CSM band-expectations.pdf`, or `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf` |
+| Band expectations | Replace `knowledge-bases/BTS band-expectations.pdf`, `knowledge-bases/CSM band-expectations.pdf`, or `knowledge-bases/ATL-band-expectations-by-band.md` (regenerate it if the source PDF changes) |
 
 ---
 

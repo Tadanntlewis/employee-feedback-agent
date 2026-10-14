@@ -47,7 +47,7 @@ graph TB
     Skill -->|Read| BTSBand[knowledge-bases/BTS band-expectations.pdf]
     Skill -->|Read| CSMBand[knowledge-bases/CSM band-expectations.pdf]
     Skill -->|Read| ATLGoals[knowledge-bases/ATL-role-goals.md]
-    Skill -->|Read| ATLBand[knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf]
+    Skill -->|Read| ATLBand[knowledge-bases/ATL-band-expectations-by-band.md]
     RoleGoals -->|Criteria| Mode
     ATLGoals -->|Criteria| Mode
     BTSBand -->|Standards| Mode
@@ -81,7 +81,8 @@ employee-feedback-agent/
 │   ├── ATL-role-goals.md               # Role goals for ATL
 │   ├── BTS band-expectations.pdf       # BTS band 6-10 expectations
 │   ├── CSM band-expectations.pdf       # CSM band 6-10 expectations
-│   ├── ATL IBM Performance Expectations By Band 2026.pdf  # ATL band expectations
+│   ├── ATL-band-expectations-by-band.md  # ATL band expectations (Bands 8-10), extracted from the PDF below
+│   ├── ATL IBM Performance Expectations By Band 2026.pdf  # ATL band expectations (source)
 │   ├── role-goals-kb.yaml              # WXO KB config (reference only)
 │   └── band-expectations-kb.yaml       # WXO KB config (reference only)
 ├── employee-self-assessment-template.md

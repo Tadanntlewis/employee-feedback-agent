@@ -1,6 +1,6 @@
 # Employee Feedback Agent - Project Structure
 
-> **Note:** This document describes the original watsonx Orchestrate (WXO) deployment. Account Technical Leaders (ATL) are now also supported there via `knowledge-bases/ATL-role-goals.txt` and `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf`, both included in the KB YAML files. See [`README.md`](README.md) for the current local Bob architecture.
+> **Note:** This document describes the original watsonx Orchestrate (WXO) deployment. Account Technical Leaders (ATL) are now also supported there via `knowledge-bases/ATL-role-goals.txt` and `knowledge-bases/ATL-band-expectations-by-band.txt`, both included in the KB YAML files. See [`README.md`](README.md) for the current local Bob architecture.
 
 ## Visual Overview
 
