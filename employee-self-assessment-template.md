@@ -8,7 +8,7 @@
 
 **Name:** ___________________________
 
-**Role:** ☐ Brand Technical Specialist (BTS)  ☐ Client Success Manager (CSM)
+**Role:** ☐ Brand Technical Specialist (BTS)  ☐ Client Success Manager (CSM)  ☐ Account Technical Leader (ATL)
 
 **Band:** ☐ 6  ☐ 7  ☐ 8  ☐ 9  ☐ 10
 
@@ -307,6 +307,52 @@ _________________________________________________________________
 **Examples:**
 - _______________________________________________________________
 - _______________________________________________________________
+
+---
+
+### For Account Technical Leaders (ATL)
+
+#### Deliver Business and Financial Results
+*How did you lead technical strategy and progress opportunities with sellers and clients?*
+
+**Your Response:**
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+
+**Metrics:**
+- Business, technical sales, adoption, and financial targets: ____________
+- Technical wins / POC conversions / Client Engineering outcomes: ________
+- Opportunity management (ISC hygiene): __________________________________
+
+#### Technical and Leadership Growth
+*How have you grown your technical depth and leadership, and enabled others?*
+
+**Your Response:**
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+
+**Examples:**
+- Certifications / badges earned: _______________________________________
+- Mentoring (as mentor and mentee): _____________________________________
+- Assets, presentations, or knowledge sharing: __________________________
+
+#### Client-Centric Execution and Team Contribution
+*How have you acted as a trusted technical advisor and contributed to the team?*
+
+**Your Response:**
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+
+**Examples:**
+- Client and stakeholder feedback: ______________________________________
+- Cross-team collaboration (BTS, CSM, Client Engineering, Services, etc.): ___
+- Territory planning and operational discipline: ________________________
 
 ---
 

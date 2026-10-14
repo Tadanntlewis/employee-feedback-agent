@@ -7,7 +7,7 @@
 
 **Employee Name:** ___________________________
 
-**Role:** ☐ Brand Technical Specialist (BTS)  ☐ Client Success Manager (CSM)
+**Role:** ☐ Brand Technical Specialist (BTS)  ☐ Client Success Manager (CSM)  ☐ Account Technical Leader (ATL)
 
 **Band:** ☐ 6  ☐ 7  ☐ 8  ☐ 9  ☐ 10
 
