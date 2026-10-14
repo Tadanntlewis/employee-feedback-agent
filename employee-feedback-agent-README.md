@@ -2,6 +2,8 @@
 
 An AI-powered performance review assistant built with IBM watsonx Orchestrate that generates structured, objective feedback for Brand Technical Specialists (BTS) and Client Success Managers (CSM) in salary bands 6-10.
 
+> **Note:** Account Technical Leader (ATL) support is available in the local Bob runtime only (see [`README.md`](README.md)). The watsonx Orchestrate configuration described below covers BTS and CSM.
+
 ## Overview
 
 The Employee Feedback Agent helps managers create comprehensive performance reviews by:
@@ -269,6 +271,14 @@ The agent generates a structured review including:
 - Client Advocacy and Success
 - Proactive Account Management
 - Strategic Planning and Execution
+- Band-Level Competencies
+
+### Account Technical Leader (ATL) — Bob runtime only
+
+**Evaluation Categories:**
+- Deliver Business and Financial Results
+- Technical and Leadership Growth
+- Client-Centric Execution and Team Contribution
 - Band-Level Competencies
 
 ## Supported Salary Bands

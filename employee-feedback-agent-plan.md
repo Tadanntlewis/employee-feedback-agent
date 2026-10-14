@@ -1,5 +1,7 @@
 # Employee Feedback Agent - Implementation Plan
 
+> **Note:** This is the original WXO-based plan, covering BTS and CSM. The Bob runtime has since added Account Technical Leader (ATL) support using `knowledge-bases/ATL-role-goals.md` and `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf`. See [`README.md`](README.md) for the current architecture.
+
 ## Overview
 
 An intelligent agent that generates structured performance feedback for team members (BTS and CSM roles) by analyzing employee and manager feedback against role-specific goals and salary band expectations (Bands 6-10).

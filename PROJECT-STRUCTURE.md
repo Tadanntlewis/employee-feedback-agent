@@ -1,5 +1,7 @@
 # Employee Feedback Agent - Project Structure
 
+> **Note:** This document describes the original watsonx Orchestrate (WXO) deployment, which covers BTS and CSM. The current local Bob runtime also supports Account Technical Leaders (ATL) via `knowledge-bases/ATL-role-goals.md` and `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf`. See [`README.md`](README.md) for the current architecture.
+
 ## Visual Overview
 
 ```

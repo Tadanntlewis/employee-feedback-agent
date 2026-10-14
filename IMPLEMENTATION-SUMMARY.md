@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-An AI-powered Employee Feedback Agent that generates structured performance reviews for Brand Technical Specialists (BTS) and Client Success Managers (CSM) in salary bands 6-10. The agent runs locally in **IBM Bob** — no watsonx Orchestrate deployment required.
+An AI-powered Employee Feedback Agent that generates structured performance reviews for Brand Technical Specialists (BTS), Client Success Managers (CSM), and Account Technical Leaders (ATL) in salary bands 6-10. The agent runs locally in **IBM Bob** — no watsonx Orchestrate deployment required.
 
 **GitHub:** https://github.com/Tadanntlewis/employee-feedback-agent  
 **Status:** ✅ Ready to Use  
@@ -30,19 +30,21 @@ A Bob skill that replaces watsonx Orchestrate's knowledge base queries with loca
 
 **How it works:**
 - Determines which PDFs are needed based on the employee's role
-- Reads `knowledge-bases/role-goals.pdf` and the appropriate band expectations PDF using `read_file`
+- Reads the appropriate role goals file (`role-goals.pdf` for BTS/CSM, `ATL-role-goals.md` for ATL) and the appropriate band expectations PDF using `read_file`
 - Loads the content directly into context so the agent can reference it during generation
 - Auto-activates when the agent needs KB content — no manual invocation needed
 
 ### 3. Knowledge Base Documents (`knowledge-bases/`)
 
-Three PDFs included in the repository:
+Five files included in the repository:
 
 | File | Contents |
 |------|----------|
 | `role-goals.pdf` | BTS and CSM role goals, KPIs, success criteria, cross-role competencies |
+| `ATL-role-goals.md` | 2026 goal plan for Account Technical Leaders |
 | `BTS band-expectations.pdf` | Band 6-10 competencies, skills, and progression criteria for BTS |
 | `CSM band-expectations.pdf` | Band 6-10 competencies, skills, and progression criteria for CSM |
+| `ATL IBM Performance Expectations By Band 2026.pdf` | Band 6-10 performance expectations for ATL |
 
 ### 4. Original WXO Files (reference only)
 
@@ -67,9 +69,11 @@ Employee Feedback Agent Mode (.bob/custom_modes.yaml)
       │
       ├──► employee-feedback-kb Skill (.bob/skills/employee-feedback-kb/SKILL.md)
       │         │
-      │         ├──► knowledge-bases/role-goals.pdf
+      │         ├──► knowledge-bases/role-goals.pdf             (BTS/CSM employees)
+      │         ├──► knowledge-bases/ATL-role-goals.md          (ATL employees)
       │         ├──► knowledge-bases/BTS band-expectations.pdf  (BTS employees)
-      │         └──► knowledge-bases/CSM band-expectations.pdf  (CSM employees)
+      │         ├──► knowledge-bases/CSM band-expectations.pdf  (CSM employees)
+      │         └──► knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf  (ATL employees)
       │
       ▼
 Structured Review Output
@@ -92,9 +96,11 @@ employee-feedback-agent/
 ├── agents/
 │   └── employee_feedback_agent.yaml          # WXO agent config (reference)
 ├── knowledge-bases/
-│   ├── role-goals.pdf                        # Role goals KB
+│   ├── role-goals.pdf                        # BTS/CSM role goals
+│   ├── ATL-role-goals.md                     # ATL role goals
 │   ├── BTS band-expectations.pdf             # BTS band expectations KB
 │   ├── CSM band-expectations.pdf             # CSM band expectations KB
+│   ├── ATL IBM Performance Expectations By Band 2026.pdf  # ATL band expectations
 │   ├── role-goals-kb.yaml                    # WXO KB config (reference)
 │   └── band-expectations-kb.yaml             # WXO KB config (reference)
 ├── employee-self-assessment-template.md
@@ -115,6 +121,9 @@ Technical Excellence · Brand Knowledge and Advocacy · Client Relationship Mana
 
 ### Client Success Manager (CSM)
 Client Relationship Excellence · Revenue Growth and Account Expansion · Client Advocacy and Success · Proactive Account Management · Strategic Planning and Execution · Band-Level Competencies
+
+### Account Technical Leader (ATL)
+Deliver Business and Financial Results · Technical and Leadership Growth · Client-Centric Execution and Team Contribution · Band-Level Competencies
 
 ---
 
@@ -139,8 +148,8 @@ Client Relationship Excellence · Revenue Growth and Account Expansion · Client
 |----------------|-------|
 | Agent behavior, output format, intake flow | `.bob/custom_modes.yaml` — `roleDefinition` field |
 | How PDFs are loaded / which files to use | `.bob/skills/employee-feedback-kb/SKILL.md` |
-| Role goals and KPIs | Replace `knowledge-bases/role-goals.pdf` |
-| Band expectations | Replace `knowledge-bases/BTS band-expectations.pdf` or `knowledge-bases/CSM band-expectations.pdf` |
+| Role goals and KPIs | Replace `knowledge-bases/role-goals.pdf` (BTS/CSM) or `knowledge-bases/ATL-role-goals.md` (ATL) |
+| Band expectations | Replace `knowledge-bases/BTS band-expectations.pdf`, `knowledge-bases/CSM band-expectations.pdf`, or `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf` |
 
 ---
 

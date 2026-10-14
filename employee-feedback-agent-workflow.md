@@ -33,7 +33,7 @@ If you cannot see the rendered diagrams, see the **ASCII Text Workflow** section
     │ Step 1: Employee    │
     │ Basics              │
     │ • Name              │
-    │ • Role (BTS/CSM)    │
+    │ • Role (BTS/CSM/ATL)│
     │ • Band (6-10)       │
     │ • Review Period     │
     │ • Review Type       │
@@ -106,18 +106,18 @@ If you cannot see the rendered diagrams, see the **ASCII Text Workflow** section
          │Employee │
          │ Role?   │
          └────┬────┘
-         BTS  │  CSM
-         ↓    ↓
-    ┌─────────────┐  ┌─────────────┐
-    │ BTS Band    │  │ CSM Band    │
-    │ Expectations│  │ Expectations│
-    │ • Technical │  │ • Client    │
-    │ • Band      │  │ • Band      │
-    │   Skills    │  │   Skills    │
-    │ • Leadership│  │ • Leadership│
-    │ • Progress  │  │ • Progress  │
-    └──────┬──────┘  └──────┬──────┘
-           └────────┬────────┘
+      BTS │  CSM  │  ATL
+      ↓   ↓       ↓
+    ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+    │ BTS Band    │  │ CSM Band    │  │ ATL Band    │
+    │ Expectations│  │ Expectations│  │ Expectations│
+    │ • Technical │  │ • Client    │  │ • Business  │
+    │ • Band      │  │ • Band      │  │ • Technical │
+    │   Skills    │  │   Skills    │  │   Leadership│
+    │ • Leadership│  │ • Leadership│  │ • Client    │
+    │ • Progress  │  │ • Progress  │  │ • Progress  │
+    └──────┬──────┘  └──────┬──────┘  └──────┬──────┘
+           └────────┬───────┴────────────────┘
                    ↓
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -197,9 +197,10 @@ KEY COMPONENTS:
    • Context Building
 
 📚 KNOWLEDGE BASES
-   • Role Goals KB (BTS & CSM goals, KPIs)
+   • Role Goals KB (BTS, CSM & ATL goals, KPIs)
    • BTS Band Expectations KB (Bands 6-10)
    • CSM Band Expectations KB (Bands 6-10)
+   • ATL Band Expectations KB (Bands 6-10)
 
 ⚙️  PROCESSING ENGINE
    • RAG Query Engine (semantic search)
@@ -256,6 +257,7 @@ graph TB
         B1[Query Role Goals KB] --> B2{Employee Role?}
         B2 -->|BTS| B3[BTS Band<br/>Expectations]
         B2 -->|CSM| B4[CSM Band<br/>Expectations]
+        B2 -->|ATL| B5[ATL Band<br/>Expectations]
     end
     
     subgraph Phase3[" PHASE 3: ANALYSIS & GENERATION "]
@@ -276,6 +278,7 @@ graph TB
     Phase2 --> Phase3
     B3 --> Phase3
     B4 --> Phase3
+    B5 --> Phase3
     Phase3 --> Phase4
     C5 --> Phase4
     C6 --> Phase4
@@ -308,6 +311,7 @@ flowchart LR
         K1[(Role Goals<br/>KB)]
         K2[(BTS Band<br/>Expectations)]
         K3[(CSM Band<br/>Expectations)]
+        K4[(ATL Band<br/>Expectations)]
     end
     
     subgraph Processing[" PROCESSING ENGINE "]
@@ -331,6 +335,7 @@ flowchart LR
     K1 --> P1
     K2 --> P1
     K3 --> P1
+    K4 --> P1
     
     P1 --> P2
     P2 --> P3
@@ -354,7 +359,7 @@ flowchart LR
 flowchart TD
     Start([Manager Initiates Review]) --> Step1[Step 1: Employee Basics]
     
-    Step1 --> Gather1[Collect:<br/>- Employee Name<br/>- Role BTS/CSM<br/>- Salary Band 6-10<br/>- Review Period<br/>- Review Type]
+    Step1 --> Gather1[Collect:<br/>- Employee Name<br/>- Role BTS/CSM/ATL<br/>- Salary Band 6-10<br/>- Review Period<br/>- Review Type]
     
     Gather1 --> Step2[Step 2: Previous Review Check]
     
@@ -390,8 +395,11 @@ flowchart TD
     
     RoleCheck -->|CSM| KB2_CSM[Retrieve CSM<br/>Band Expectations:<br/>- Client Management<br/>- Band Competencies<br/>- Leadership Expectations<br/>- Progression Criteria]
     
+    RoleCheck -->|ATL| KB2_ATL[Retrieve ATL<br/>Band Expectations:<br/>- Business & Financial Results<br/>- Technical & Leadership Growth<br/>- Client-Centric Execution<br/>- Progression Criteria]
+    
     KB2_BTS --> Analysis[Performance Analysis]
     KB2_CSM --> Analysis
+    KB2_ATL --> Analysis
     
     Analysis --> Integrate[Integrate Analysis:<br/>- Compare vs Role Goals<br/>- Compare vs Band Expectations<br/>- Synthesize Employee & Manager Input<br/>- Track Progress if Previous Review]
     
@@ -420,6 +428,7 @@ flowchart TD
     style KB1 fill:#fff4e6
     style KB2_BTS fill:#fff4e6
     style KB2_CSM fill:#fff4e6
+    style KB2_ATL fill:#fff4e6
     style Analysis fill:#e3f2fd
     style Integrate fill:#e3f2fd
     style Output fill:#f3e5f5
@@ -433,7 +442,7 @@ The agent guides managers through a structured conversation to collect all neces
 
 1. **Employee Basics**
    - Employee name
-   - Role (BTS or CSM)
+   - Role (BTS, CSM, or ATL)
    - Current salary band (6-10)
    - Review period (e.g., "Q1 2026", "Mid-Year 2026")
    - Review type (Quarterly, Mid-Year, or Year-End)
@@ -453,7 +462,7 @@ The agent guides managers through a structured conversation to collect all neces
    - Work quality examples
    - Client feedback and testimonials
    - Team collaboration contributions
-   - Technical skills (BTS) or client outcomes (CSM)
+   - Technical skills (BTS), client outcomes (CSM), or business results and technical leadership (ATL)
    - Areas of concern or improvement
    - Manager's key feedback points
 
@@ -474,7 +483,7 @@ After gathering information, the agent queries knowledge bases to retrieve organ
    - Performance measurement guidelines
 
 2. **Band Expectations Knowledge Base Query**
-   - **Role-specific routing**: BTS employees get BTS expectations, CSM employees get CSM expectations
+   - **Role-specific routing**: BTS employees get BTS expectations, CSM employees get CSM expectations, ATL employees get ATL expectations
    - Competency expectations for employee's current band
    - Technical and soft skill requirements
    - Leadership and autonomy expectations
@@ -531,7 +540,7 @@ The agent performs integrated analysis and generates structured feedback:
 
 ✅ **Structured Conversation Flow** - Guides managers through comprehensive information gathering  
 ✅ **Knowledge Base RAG** - Real-time retrieval of organizational standards and expectations  
-✅ **Role-Specific Processing** - Different KB queries and evaluation criteria for BTS vs CSM  
+✅ **Role-Specific Processing** - Different KB queries and evaluation criteria for BTS vs CSM vs ATL  
 ✅ **Band-Specific Evaluation** - Assesses against band 6-10 competency expectations  
 ✅ **Progress Tracking** - Optional comparison with previous reviews to show growth  
 ✅ **Employee Input Integration** - Balanced assessment incorporating self-feedback  
@@ -560,7 +569,7 @@ Final Review Output
 ## Integration Points
 
 ### Knowledge Base Integration
-- **employee-performance-kb**: Contains role goals, BTS band expectations, and CSM band expectations
+- **employee-performance-kb**: Contains role goals, BTS band expectations, CSM band expectations, and ATL band expectations
 - **Retrieval Method**: Semantic search with vector embeddings
 - **Context Window**: ~4000 tokens
 - **Query Response Time**: 2-5 seconds
