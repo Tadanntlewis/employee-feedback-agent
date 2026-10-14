@@ -16,6 +16,7 @@ You'll need to prepare **2 PDF documents**:
 **Should contain:**
 - Brand Technical Specialist (BTS) role goals, KPIs, and success criteria
 - Client Success Manager (CSM) role goals, KPIs, and success criteria
+- Account Technical Leader (ATL) role goals: supplied separately as `ATL-role-goals.txt` (a plain-text copy of `ATL-role-goals.md`, since WXO does not ingest `.md` files)
 - Cross-role competencies and expectations
 - Performance measurement guidelines
 - Rating scales and evaluation criteria

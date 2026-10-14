@@ -2,7 +2,7 @@
 
 An AI-powered performance review assistant built with IBM watsonx Orchestrate that generates structured, objective feedback for Brand Technical Specialists (BTS) and Client Success Managers (CSM) in salary bands 6-10.
 
-> **Note:** Account Technical Leader (ATL) support is available in the local Bob runtime only (see [`README.md`](README.md)). The watsonx Orchestrate configuration described below covers BTS and CSM.
+> **Note:** The agent also supports Account Technical Leaders (ATL). ATL role goals are supplied to watsonx Orchestrate as `knowledge-bases/ATL-role-goals.txt` (a plain-text copy of `ATL-role-goals.md`, because WXO does not ingest `.md` files), and ATL band expectations as `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf`. Keep the `.txt` copy in sync with the `.md` source.
 
 ## Overview
 
@@ -273,7 +273,7 @@ The agent generates a structured review including:
 - Strategic Planning and Execution
 - Band-Level Competencies
 
-### Account Technical Leader (ATL) — Bob runtime only
+### Account Technical Leader (ATL)
 
 **Evaluation Categories:**
 - Deliver Business and Financial Results

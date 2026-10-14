@@ -1,6 +1,6 @@
 # Employee Feedback Agent - Implementation Plan
 
-> **Note:** This is the original WXO-based plan, covering BTS and CSM. The Bob runtime has since added Account Technical Leader (ATL) support using `knowledge-bases/ATL-role-goals.md` and `knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf`. See [`README.md`](README.md) for the current architecture.
+> **Note:** This is the original WXO-based plan, written for BTS and CSM. Account Technical Leader (ATL) support has since been added to both the WXO agent/KB configs and the Bob runtime. See [`README.md`](README.md) for the current architecture.
 
 ## Overview
 
