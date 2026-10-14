@@ -1,6 +1,6 @@
 ---
 name: employee-feedback-kb
-description: Use when the Employee Feedback Agent needs to load role goals or band expectations into context. Reads the local PDF knowledge base files (role-goals.pdf, BTS band-expectations.pdf, CSM band-expectations.pdf) so the agent can reference them without a WXO deployment.
+description: Use when the Employee Feedback Agent needs to load role goals or band expectations into context. Reads the local PDF knowledge base files (role-goals.pdf, ATL-role-goals.md, and the BTS, CSM, and ATL band-expectations files) so the agent can reference them without a WXO deployment.
 ---
 
 # Employee Feedback Knowledge Base Loader

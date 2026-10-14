@@ -1,6 +1,6 @@
 # Employee Feedback Agent
 
-An AI-powered performance review assistant for Brand Technical Specialists (BTS) and Client Success Managers (CSM) in salary bands 6-10. Runs locally in **IBM Bob** — no watsonx Orchestrate deployment required.
+An AI-powered performance review assistant for Brand Technical Specialists (BTS), Client Success Managers (CSM), and Account Technical Leaders (ATL) in salary bands 6-10. Runs locally in **IBM Bob** — no watsonx Orchestrate deployment required.
 
 ## Overview
 
@@ -46,9 +46,13 @@ graph TB
     Skill -->|Read| RoleGoals[knowledge-bases/role-goals.pdf]
     Skill -->|Read| BTSBand[knowledge-bases/BTS band-expectations.pdf]
     Skill -->|Read| CSMBand[knowledge-bases/CSM band-expectations.pdf]
+    Skill -->|Read| ATLGoals[knowledge-bases/ATL-role-goals.md]
+    Skill -->|Read| ATLBand[knowledge-bases/ATL IBM Performance Expectations By Band 2026.pdf]
     RoleGoals -->|Criteria| Mode
+    ATLGoals -->|Criteria| Mode
     BTSBand -->|Standards| Mode
     CSMBand -->|Standards| Mode
+    ATLBand -->|Standards| Mode
     Mode -->|Generate| Review[Structured Review]
     Review -->|Return| Manager
 
@@ -57,6 +61,8 @@ graph TB
     style RoleGoals fill:#e1ffe1
     style BTSBand fill:#ffe1f5
     style CSMBand fill:#ffe1f5
+    style ATLGoals fill:#e1ffe1
+    style ATLBand fill:#ffe1f5
 ```
 
 ## Project Structure
@@ -72,8 +78,10 @@ employee-feedback-agent/
 │   └── employee_feedback_agent.yaml    # Original WXO agent config (reference only)
 ├── knowledge-bases/
 │   ├── role-goals.pdf                  # Role goals for BTS and CSM
+│   ├── ATL-role-goals.md               # Role goals for ATL
 │   ├── BTS band-expectations.pdf       # BTS band 6-10 expectations
 │   ├── CSM band-expectations.pdf       # CSM band 6-10 expectations
+│   ├── ATL IBM Performance Expectations By Band 2026.pdf  # ATL band expectations
 │   ├── role-goals-kb.yaml              # WXO KB config (reference only)
 │   └── band-expectations-kb.yaml       # WXO KB config (reference only)
 ├── employee-self-assessment-template.md
@@ -117,7 +125,7 @@ Bands 6–10, with role-specific competency and experience expectations at each 
 Manager: I need to create a Q1 review for Sarah Johnson
 
 Agent: I'll help you create a performance review. Let me gather some information.
-       What is Sarah's role? (BTS or CSM)
+       What is Sarah's role? (BTS, CSM, or ATL)
 
 Manager: CSM
 
