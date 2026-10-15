@@ -130,7 +130,7 @@ Use this data to try the agent before your first real review:
 | Issue | Fix |
 |-------|-----|
 | Mode not visible in picker | Confirm this folder is set as your Bob workspace and restart Bob |
-| PDFs not loading | Verify PDF files exist at `knowledge-bases/role-goals.pdf`, `knowledge-bases/BTS band-expectations.pdf`, `knowledge-bases/CSM band-expectations.pdf` |
+| PDFs not loading | Verify PDF files exist at `knowledge-bases/role-goals.pdf`, `knowledge-bases/BTS-band-expectations-by-band.md`, `knowledge-bases/CSM-band-expectations-by-band.md`, `knowledge-bases/ATL-role-goals.md`, `knowledge-bases/ATL-band-expectations-by-band.md` |
 | Agent gives generic feedback | Provide more specific performance details and examples |
 
 ## Getting Help

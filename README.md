@@ -22,8 +22,8 @@ This agent helps managers create comprehensive, structured performance reviews b
   ```
 - The knowledge base PDFs in the `knowledge-bases/` folder (already included):
   - `knowledge-bases/role-goals.pdf`
-  - `knowledge-bases/BTS band-expectations.pdf`
-  - `knowledge-bases/CSM band-expectations.pdf`
+  - `knowledge-bases/BTS-band-expectations-by-band.md`
+  - `knowledge-bases/CSM-band-expectations-by-band.md`
 
 ### Setup (One Time)
 
@@ -44,8 +44,8 @@ graph TB
     Manager[Manager] -->|Provide Info| Mode[Employee Feedback Agent Mode]
     Mode -->|Activate| Skill[employee-feedback-kb Skill]
     Skill -->|Read| RoleGoals[knowledge-bases/role-goals.pdf]
-    Skill -->|Read| BTSBand[knowledge-bases/BTS band-expectations.pdf]
-    Skill -->|Read| CSMBand[knowledge-bases/CSM band-expectations.pdf]
+    Skill -->|Read| BTSBand[knowledge-bases/BTS-band-expectations-by-band.md]
+    Skill -->|Read| CSMBand[knowledge-bases/CSM-band-expectations-by-band.md]
     Skill -->|Read| ATLGoals[knowledge-bases/ATL-role-goals.md]
     Skill -->|Read| ATLBand[knowledge-bases/ATL-band-expectations-by-band.md]
     RoleGoals -->|Criteria| Mode
@@ -79,8 +79,10 @@ employee-feedback-agent/
 ├── knowledge-bases/
 │   ├── role-goals.pdf                  # Role goals for BTS and CSM
 │   ├── ATL-role-goals.md               # Role goals for ATL
-│   ├── BTS band-expectations.pdf       # BTS band 6-10 expectations
-│   ├── CSM band-expectations.pdf       # CSM band 6-10 expectations
+│   ├── BTS-band-expectations-by-band.md  # BTS expectations by band (used by the agent)
+│   ├── CSM-band-expectations-by-band.md  # CSM expectations by band (used by the agent)
+│   ├── BTS band-expectations.pdf       # Source PDF for the BTS file above
+│   ├── CSM band-expectations.pdf       # Source PDF for the CSM file above
 │   ├── ATL-band-expectations-by-band.md  # ATL band expectations (Bands 8-10), extracted from the PDF below
 │   ├── ATL IBM Performance Expectations By Band 2026.pdf  # ATL band expectations (source)
 │   ├── role-goals-kb.yaml              # WXO KB config (reference only)

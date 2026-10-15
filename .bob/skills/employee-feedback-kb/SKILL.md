@@ -1,6 +1,6 @@
 ---
 name: employee-feedback-kb
-description: Use when the Employee Feedback Agent needs to load role goals or band expectations into context. Reads the local PDF knowledge base files (role-goals.pdf, ATL-role-goals.md, and the BTS, CSM, and ATL band-expectations files) so the agent can reference them without a WXO deployment.
+description: Use when the Employee Feedback Agent needs to load role goals or band expectations into context. Reads the local knowledge base files (role-goals.pdf, ATL-role-goals.md, and the BTS, CSM, and ATL band-expectations-by-band files) so the agent can reference them without a WXO deployment.
 ---
 
 # Employee Feedback Knowledge Base Loader
@@ -16,9 +16,21 @@ Ask (or infer from context) which documents are needed:
   - BTS or CSM employee: `knowledge-bases/role-goals.pdf`
   - ATL employee: `knowledge-bases/ATL-role-goals.md`
 - **Band expectations**:
-  - BTS employee: `knowledge-bases/BTS band-expectations.pdf`
-  - CSM employee: `knowledge-bases/CSM band-expectations.pdf`
-  - ATL employee: `knowledge-bases/ATL-band-expectations-by-band.md` (band-by-band restatement of `ATL IBM Performance Expectations By Band 2026.pdf`; use this instead of the PDF, whose table layout is lost when read as text). ATL expectations are defined for Bands 8-10 only; Bands 6 and 7 are empty in the source.
+  - BTS employee: `knowledge-bases/BTS-band-expectations-by-band.md`
+  - CSM employee: `knowledge-bases/CSM-band-expectations-by-band.md`
+  - ATL employee: `knowledge-bases/ATL-band-expectations-by-band.md`
+
+The three `*-band-expectations-by-band.md` files restate the source PDFs' Factor x Band tables
+with every cell tied to its band column. **Use them instead of the PDFs**: read as text, the
+PDFs lose their table layout, so it is unclear which band a block of text belongs to. The PDFs
+stay in the folder as the authoritative source.
+
+Band coverage notes:
+- ATL: expectations are defined for Bands 8-10 only (Bands 6 and 7 are empty in the source).
+- BTS: Band 10 is "Exception use only" with no defined expectations. Bands 7-9 are cumulative
+  ("B06, plus: ...").
+- CSM: all Bands 6-10 are defined.
+- If the employee's band has no defined expectations, tell the manager rather than inventing any.
 
 If the employee role has not been established yet, load all role goals files and all band
 expectations files so the content is available.

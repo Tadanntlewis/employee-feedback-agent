@@ -13,8 +13,10 @@ Use this checklist to confirm the agent is set up and working correctly in IBM B
   ```
 - [ ] Knowledge base PDFs are present:
   - [ ] `knowledge-bases/role-goals.pdf`
-  - [ ] `knowledge-bases/BTS band-expectations.pdf`
-  - [ ] `knowledge-bases/CSM band-expectations.pdf`
+  - [ ] `knowledge-bases/BTS-band-expectations-by-band.md`
+  - [ ] `knowledge-bases/CSM-band-expectations-by-band.md`
+  - [ ] `knowledge-bases/ATL-role-goals.md`
+  - [ ] `knowledge-bases/ATL-band-expectations-by-band.md`
 - [ ] Bob configuration files are present:
   - [ ] `.bob/custom_modes.yaml`
   - [ ] `.bob/skills/employee-feedback-kb/SKILL.md`
@@ -56,7 +58,7 @@ Use the sample data below to confirm everything works end to end.
   - Generated $250K in expansion revenue
   - Led 12 strategic business reviews
   - Mentored 2 junior CSMs
-- [ ] Confirm agent loads KB (role-goals.pdf + CSM band-expectations.pdf)
+- [ ] Confirm agent loads KB (role-goals.pdf + CSM-band-expectations-by-band.md)
 - [ ] Agent generates review with two sections (What Went Well / What Could Be Improved)
 - [ ] Review references Band 8 CSM expectations and role goals
 

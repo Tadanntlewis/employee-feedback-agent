@@ -5,8 +5,8 @@ description: Comprehensive knowledge base containing role-specific goals, KPIs, 
 documents:
   - path: ./role-goals.pdf
   - path: ./ATL-role-goals.txt
-  - path: ./BTS band-expectations.pdf
-  - path: ./CSM band-expectations.pdf
+  - path: ./BTS-band-expectations-by-band.txt
+  - path: ./CSM-band-expectations-by-band.txt
   - path: ./ATL-band-expectations-by-band.txt
 
 # Made with Bob

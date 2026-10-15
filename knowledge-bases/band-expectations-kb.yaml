@@ -3,8 +3,8 @@ kind: knowledge_base
 name: band-expectations-kb
 description: Salary band expectations, competencies, and progression criteria for bands 6-10 (BTS, CSM, and ATL roles)
 documents:
-  - path: ./BTS band-expectations.pdf
-  - path: ./CSM band-expectations.pdf
+  - path: ./BTS-band-expectations-by-band.txt
+  - path: ./CSM-band-expectations-by-band.txt
   - path: ./ATL-band-expectations-by-band.txt
 
 # Made with Bob

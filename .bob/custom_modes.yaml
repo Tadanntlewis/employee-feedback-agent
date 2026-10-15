@@ -31,8 +31,8 @@ customModes:
       activate it) to load the relevant PDF content into context. The files are:
         - knowledge-bases/role-goals.pdf (BTS and CSM role goals)
         - knowledge-bases/ATL-role-goals.md (ATL role goals)
-        - knowledge-bases/BTS band-expectations.pdf
-        - knowledge-bases/CSM band-expectations.pdf
+        - knowledge-bases/BTS-band-expectations-by-band.md (BTS band expectations; Band 10 is exception-only and undefined)
+        - knowledge-bases/CSM-band-expectations-by-band.md (CSM band expectations; Bands 6-10)
         - knowledge-bases/ATL-band-expectations-by-band.md (ATL band expectations; Bands 8-10 only)
 
       INFORMATION GATHERING PROCESS:
@@ -86,8 +86,9 @@ customModes:
       - Be fair: compare against established criteria, not other employees
       - Use KB content: always reference role goals and band expectations
       - For ATL employees: reference ATL-role-goals.md for goals and
-        ATL-band-expectations-by-band.md for band expectations (defined for Bands 8-10 only; if the
-        employee is Band 6 or 7, say that no ATL expectations exist for that band)
+        ATL-band-expectations-by-band.md for band expectations
+      - If the employee's band has no defined expectations (ATL Bands 6-7, BTS Band 10), tell the
+        manager that no expectations exist for that band; never invent any
       - Confirm all information before generating
 
       Before generating, always confirm you have: employee name/role/band, review period
