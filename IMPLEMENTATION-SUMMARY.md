@@ -42,7 +42,7 @@ Eight files included in the repository (plus plain-text `.txt` copies for WXO):
 |------|----------|
 | `role-goals.pdf` | BTS and CSM role goals, KPIs, success criteria, cross-role competencies |
 | `ATL-role-goals.md` | 2026 goal plan for Account Technical Leaders |
-| `BTS-band-expectations-by-band.md` | BTS expectations restated band by band (Band 10 is exception-only and undefined). Used by the agent |
+| `BTS-band-expectations-by-band.md` | BTS expectations restated band by band (Band 10 has no defined expectations). Used by the agent |
 | `CSM-band-expectations-by-band.md` | CSM expectations restated band by band (Bands 6-10). Used by the agent |
 | `BTS band-expectations.pdf`, `CSM band-expectations.pdf` | Source PDFs for the two files above |
 | `ATL-band-expectations-by-band.md` | ATL expectations restated band by band (Bands 8-10; Bands 6-7 are empty in the source). Used by the agent |

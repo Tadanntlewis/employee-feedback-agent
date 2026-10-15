@@ -22,7 +22,7 @@ Most IBMers meet expectations as core performers.
 
 ## Cumulative expectations and Band 10
 
-Bands 7, 8 and 9 are written as "plus" statements (for example Band 7: "B06, plus: ..."), so each band includes all lower-band expectations. The PDF marks **Band 10 as "Exception use only"**, and states that higher band Solution Architects are by exception only. Band 10 has no defined expectations (Skills shows "n/a").
+Bands 7, 8 and 9 are written as "plus" statements (for example Band 7: "B06, plus: ..."), so each band includes all lower-band expectations. Band 10 has no defined expectations in the PDF (Skills shows "n/a"; Business Impact and Behaviors are empty).
 
 ## Band 6 — Focuses on Individual/Team Objectives and Developing Professional Effectiveness
 
@@ -126,7 +126,7 @@ B08 plus:
 - Ensures assets are repurposed and reused across multiple client engagements and opportunities, maximizing their value and impact
 - Establishes a strong professional presence on social media platforms, showcasing expertise and thought leadership
 
-## Band 10 — Leads Functional/Business Unit Strategies (Exception use only)
+## Band 10 — Leads Functional/Business Unit Strategies
 
 ### Skills
 

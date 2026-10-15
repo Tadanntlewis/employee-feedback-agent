@@ -27,7 +27,7 @@ stay in the folder as the authoritative source.
 
 Band coverage notes:
 - ATL: expectations are defined for Bands 8-10 only (Bands 6 and 7 are empty in the source).
-- BTS: Band 10 is "Exception use only" with no defined expectations. Bands 7-9 are cumulative
+- BTS: Band 10 has no defined expectations. Bands 7-9 are cumulative
   ("B06, plus: ...").
 - CSM: all Bands 6-10 are defined.
 - If the employee's band has no defined expectations, tell the manager rather than inventing any.

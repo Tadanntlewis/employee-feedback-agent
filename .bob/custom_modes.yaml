@@ -31,7 +31,7 @@ customModes:
       activate it) to load the relevant PDF content into context. The files are:
         - knowledge-bases/role-goals.pdf (BTS and CSM role goals)
         - knowledge-bases/ATL-role-goals.md (ATL role goals)
-        - knowledge-bases/BTS-band-expectations-by-band.md (BTS band expectations; Band 10 is exception-only and undefined)
+        - knowledge-bases/BTS-band-expectations-by-band.md (BTS band expectations; Band 10 has no defined expectations)
         - knowledge-bases/CSM-band-expectations-by-band.md (CSM band expectations; Bands 6-10)
         - knowledge-bases/ATL-band-expectations-by-band.md (ATL band expectations; Bands 8-10 only)
 
